@@ -36,7 +36,7 @@ function App() {
       setTime(0);
       setMilliseconds("00");
       setSeconds("00");
-      // setMinutes("00");
+      setMinutes("00");
       startTimeRef.current = null;
     }
   }
@@ -45,7 +45,6 @@ function App() {
     <div className="timer">
       <div className="timer-time">
         <h1>Timer</h1>
-        {/* <span>{time}</span> */}
         <span className="timer-minutes">{minutes}</span>
         :
         <span className="timer-seconds">{seconds}</span>
