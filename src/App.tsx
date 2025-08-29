@@ -2,6 +2,9 @@ import { useState, useRef } from 'react'
 import './App.css'
 
 function App() {
+  const [isStartButtonDisabled, setIsStartButtonDisabled]: boolean = useState(false);
+  const [isStopButtonDisabled, setIsStopButtonDisabled]: boolean = useState(true);
+  const [isResetButtonDisabled, setIsResetButtonDisabled]: boolean = useState(true);
   const [minutes, setMinutes]: string = useState("00");
   const [seconds, setSeconds]: string = useState("00");
   const [milliseconds, setMilliseconds]: string = useState("00");
@@ -14,6 +17,9 @@ function App() {
     if (isActive) return;
 
     setIsActive(true);
+    setIsStartButtonDisabled(true);
+    setIsStopButtonDisabled(false);
+    setIsResetButtonDisabled(true);
     startTimeRef.current = Date.now() - time;
     intervalIdRef.current = setInterval(() => {
       setTime(Date.now() - startTimeRef.current!);
@@ -26,6 +32,8 @@ function App() {
   function handleStop() {
     if (!isActive) return;
     setIsActive(false);
+    setIsStartButtonDisabled(false);
+    setIsResetButtonDisabled(false);
     clearInterval(intervalIdRef.current!);
   }
 
@@ -33,6 +41,9 @@ function App() {
     if (!isActive) {
       clearInterval(intervalIdRef.current!);
       setIsActive(false);
+      setIsStartButtonDisabled(false);
+      setIsStopButtonDisabled(true);
+      setIsResetButtonDisabled(true);
       setTime(0);
       setMilliseconds("00");
       setSeconds("00");
@@ -42,19 +53,21 @@ function App() {
   }
 
   return (
-    <div className="timer">
-      <div className="timer-time">
-        <h1>Timer</h1>
-        <span className="timer-minutes">{minutes}</span>
-        :
-        <span className="timer-seconds">{seconds}</span>
-        :
-        <span className="timer-milliseconds">{milliseconds}</span>
+    <div id="timer">
+      <div id="timer-time">
+        <h1 className="timer-title">Timer</h1>
+        <div className="timer-time-display">
+          <div className="timer-minutes">{minutes}</div>
+          <div className="timer-colon">:</div>
+          <div className="timer-seconds">{seconds}</div>
+          <div className="timer-colon">:</div>
+          <div className="timer-milliseconds">{milliseconds}</div>
+        </div>
       </div>
-      <div className="timer-buttons">
-        <button className="timer-start" onClick={handleStart}>Start</button>
-        <button className="timer-stop" onClick={handleStop}>Stop</button>
-        <button className="timer-reset" onClick={handleReset}>Reset</button>
+      <div id="timer-buttons">
+        <button className="timer-start" onClick={handleStart} disabled={isStartButtonDisabled}>Start</button>
+        <button className="timer-stop" onClick={handleStop} disabled={isStopButtonDisabled}>Stop</button>
+        <button className="timer-reset" onClick={handleReset} disabled={isResetButtonDisabled}>Reset</button>
       </div>
     </div>
   )
