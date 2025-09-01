@@ -10,7 +10,7 @@ This is a simple React TypeScript timer
 
 #### Desktop View:
 
-<img src="/src/assets/desktop-view.png" width="200"/>
+<img src="/src/assets/desktop-view.png" width="600"/>
 
 #### Mobile View:
 
