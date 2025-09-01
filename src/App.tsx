@@ -2,9 +2,11 @@ import { useState, useRef } from 'react'
 import './App.css'
 
 function App() {
+  // Disable buttons based on timer state
   const [isStartButtonDisabled, setIsStartButtonDisabled]: boolean = useState(false);
   const [isStopButtonDisabled, setIsStopButtonDisabled]: boolean = useState(true);
   const [isResetButtonDisabled, setIsResetButtonDisabled]: boolean = useState(true);
+  // Timer state
   const [minutes, setMinutes]: string = useState("00");
   const [seconds, setSeconds]: string = useState("00");
   const [milliseconds, setMilliseconds]: string = useState("00");
