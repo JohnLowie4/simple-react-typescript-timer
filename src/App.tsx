@@ -3,17 +3,17 @@ import './App.css'
 
 function App() {
   // Disable buttons based on timer state
-  const [isStartButtonDisabled, setIsStartButtonDisabled]: boolean = useState(false);
-  const [isStopButtonDisabled, setIsStopButtonDisabled]: boolean = useState(true);
-  const [isResetButtonDisabled, setIsResetButtonDisabled]: boolean = useState(true);
+  const [isStartButtonDisabled, setIsStartButtonDisabled] = useState<boolean>(false);
+  const [isStopButtonDisabled, setIsStopButtonDisabled] = useState<boolean>(true);
+  const [isResetButtonDisabled, setIsResetButtonDisabled] = useState<boolean>(true);
   // Timer state
-  const [minutes, setMinutes]: string = useState("00");
-  const [seconds, setSeconds]: string = useState("00");
-  const [milliseconds, setMilliseconds]: string = useState("00");
-  const [time, setTime]: number = useState(0);
-  const [isActive, setIsActive]: boolean = useState(false)
-  const startTimeRef = useRef<NodeJS.Timeout | null>(null);
-  const intervalIdRef = useRef<NodeJS.Timeout | null>(null);
+  const [minutes, setMinutes] = useState<string>("00");
+  const [seconds, setSeconds] = useState<string>("00");
+  const [milliseconds, setMilliseconds] = useState<string>("00");
+  const [time, setTime] = useState<number>(0);
+  const [isActive, setIsActive] = useState<boolean>(false)
+  const startTimeRef = useRef<number | null>(null);
+  const intervalIdRef = useRef<number | null>(null);
 
   function handleStart() {
     if (isActive) return;
