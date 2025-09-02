@@ -1,6 +1,6 @@
 # React TypeScript Timer
 
-This is a simple React TypeScript timer
+This is a simple React TypeScript timer app. You can play with the app [here](https://johnlowie4.github.io/simple-react-typescript-timer/).
 
 #### Key Features:
 
